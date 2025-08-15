@@ -8,8 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Configuration\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +21,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NKatmanliMimariOrnegi.Entities\NKatmanliMimariOrnegi.Entities.csproj" />
+    <ProjectReference Include="..\NKatmanliMimariOrnegi.SharedLibrary\NKatmanliMimariOrnegi.SharedLibrary.csproj" />
   </ItemGroup>
 
 </Project>
