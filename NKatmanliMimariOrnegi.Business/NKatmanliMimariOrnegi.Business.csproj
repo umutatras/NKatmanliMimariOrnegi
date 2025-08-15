@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NKatmanliMimariOrnegi.DataAccess\NKatmanliMimariOrnegi.DataAccess.csproj" />
+    <ProjectReference Include="..\NKatmanliMimariOrnegi.DTOs\NKatmanliMimariOrnegi.DTOs.csproj" />
   </ItemGroup>
 
 </Project>

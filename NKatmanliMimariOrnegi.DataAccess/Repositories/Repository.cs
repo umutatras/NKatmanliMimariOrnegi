@@ -16,72 +16,58 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
         _context = context;
     }
 
-    public IQueryable<T> Query()
+
+    public async Task<List<T>> GetAllAsync()
     {
-        return _context.Set<T>().AsNoTracking().AsQueryable();
+        return await _context.Set<T>().AsNoTracking().ToListAsync();
     }
-    public IQueryable<T> Query(Expression<Func<T, bool>> predicate)
+
+    public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>> filter)
     {
-        return _context.Set<T>().Where(predicate).AsNoTracking().AsQueryable();
+        return await _context.Set<T>().Where(filter).AsNoTracking().ToListAsync();
     }
-    public IQueryable<T> Query<TKey>(Expression<Func<T, TKey>> selector, OrderByType orderByType = OrderByType.ASC)
+
+    public async Task<List<T>> GetAllAsync<TKey>(Expression<Func<T, TKey>> selector, OrderByType orderByType = OrderByType.DESC)
     {
-        return orderByType == OrderByType.ASC ? _context.Set<T>().AsNoTracking().OrderBy(selector).AsQueryable() : _context.Set<T>().AsNoTracking().OrderByDescending(selector).AsQueryable();
+        return orderByType == OrderByType.ASC ? await _context.Set<T>().AsNoTracking().OrderBy(selector).ToListAsync() : await _context.Set<T>().AsNoTracking().OrderByDescending(selector).ToListAsync();
     }
-    public IQueryable<T> Query<TKey>(Expression<Func<T, bool>> predicate, Expression<Func<T, TKey>> selector, OrderByType orderByType = OrderByType.ASC)
+
+    public async Task<List<T>> GetAllAsync<TKey>(Expression<Func<T, bool>> filter, Expression<Func<T, TKey>> selector, OrderByType orderByType = OrderByType.DESC)
     {
-        return orderByType == OrderByType.ASC ? _context.Set<T>().Where(predicate).AsNoTracking().OrderBy(selector).AsQueryable() : _context.Set<T>().Where(predicate).AsNoTracking().OrderByDescending(selector).AsQueryable();
+        return orderByType == OrderByType.ASC ? await _context.Set<T>().Where(filter).AsNoTracking().OrderBy(selector).ToListAsync() : await _context.Set<T>().Where(filter).AsNoTracking().OrderByDescending(selector).ToListAsync();
     }
-    //bütün veriyi getirmek için
-    public List<T> GetAll()
+
+    public async Task<T> FindAsync(object id)
     {
-        return _context.Set<T>().AsNoTracking().ToList();
+        return await _context.Set<T>().FindAsync(id);
     }
-    //filtreleyerek getir
-    public List<T> GetAll(Expression<Func<T, bool>> predicate)
+
+    public async Task<T> GetByFilterAsync(Expression<Func<T, bool>> filter, bool asNoTracking = false)
     {
-        return _context.Set<T>().Where(predicate).AsNoTracking().ToList();
-    }
-    //sıralayarak getir
-    public List<T> GetAll<TKey>(Expression<Func<T, TKey>> selector, OrderByType orderByType = OrderByType.ASC)
-    {
-        return orderByType == OrderByType.ASC ? _context.Set<T>().AsNoTracking().OrderBy(selector).ToList() : _context.Set<T>().AsNoTracking().OrderByDescending(selector).ToList();
-    }
-    //hem sıralı hem filtreli getir
-    public List<T> GetAll<TKey>(Expression<Func<T, bool>> predicate, Expression<Func<T, TKey>> selector, OrderByType orderByType = OrderByType.ASC)
-    {
-        return orderByType == OrderByType.ASC ? _context.Set<T>().Where(predicate).AsNoTracking().OrderBy(selector).ToList() : _context.Set<T>().Where(predicate).AsNoTracking().OrderByDescending(selector).ToList();
-    }
-    public T Find(object id)
-    {
-        return _context.Set<T>().Find(id);
-    }
-    public T GetByFilter(Expression<Func<T, bool>> filter, bool asNoTracking = false)
-    {
-        return !asNoTracking ? _context.Set<T>().AsNoTracking().SingleOrDefault(filter) : _context.Set<T>().SingleOrDefault(filter);
+        return !asNoTracking ? await _context.Set<T>().AsNoTracking().SingleOrDefaultAsync(filter) : await _context.Set<T>().SingleOrDefaultAsync(filter);
     }
 
     public IQueryable<T> GetQuery()
     {
         return _context.Set<T>().AsQueryable();
     }
+
     public void Remove(T entity)
     {
         _context.Set<T>().Remove(entity);
+        _context.SaveChanges();
+
     }
 
-    public void Add(T entity)
+    public async Task AddAsync(T entity)
     {
-        _context.Set<T>().Add(entity);
-    }
-
-    public void Update(T entity, T unchanged)
-    {
-        _context.Entry(unchanged).CurrentValues.SetValues(entity);
+        await _context.Set<T>().AddAsync(entity);
+        _context.SaveChanges();
     }
 
     public void Update(T entity)
     {
         _context.Set<T>().Update(entity);
+        _context.SaveChanges();
     }
 }

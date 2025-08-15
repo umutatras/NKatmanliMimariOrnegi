@@ -5,19 +5,22 @@ namespace NKatmanliMimariOrnegi.DataAccess.Interfaces;
 
 public interface IRepository<T> where T : class
 {
-    IQueryable<T> Query();
-    IQueryable<T> Query(Expression<Func<T, bool>> predicate);
-    IQueryable<T> Query<TKey>(Expression<Func<T, TKey>> selector, OrderByType orderByType = OrderByType.ASC);
-    IQueryable<T> Query<TKey>(Expression<Func<T, bool>> predicate, Expression<Func<T, TKey>> selector, OrderByType orderByType = OrderByType.ASC);
-    List<T> GetAll();
-    List<T> GetAll(Expression<Func<T, bool>> predicate);
-    List<T> GetAll<TKey>(Expression<Func<T, TKey>> selector, OrderByType orderByType = OrderByType.ASC);
-    List<T> GetAll<TKey>(Expression<Func<T, bool>> predicate, Expression<Func<T, TKey>> selector, OrderByType orderByType = OrderByType.ASC);
-    T Find(object id);
-    T GetByFilter(Expression<Func<T, bool>> filter, bool asNoTracking = false);
+    Task<List<T>> GetAllAsync();
+    Task<List<T>> GetAllAsync(Expression<Func<T, bool>> filter);
+
+    Task<List<T>> GetAllAsync<TKey>(Expression<Func<T, TKey>> selector, OrderByType orderByType = OrderByType.DESC);
+
+    Task<List<T>> GetAllAsync<TKey>(Expression<Func<T, bool>> filter, Expression<Func<T, TKey>> selector, OrderByType orderByType = OrderByType.DESC);
+
+    Task<T> FindAsync(object id);
+
+    Task<T> GetByFilterAsync(Expression<Func<T, bool>> filter, bool asNoTracking = false);
+
     IQueryable<T> GetQuery();
+
     void Remove(T entity);
-    void Add(T entity);
-    void Update(T entity, T unchanged);
+
+    Task AddAsync(T entity);
+
     void Update(T entity);
 }
