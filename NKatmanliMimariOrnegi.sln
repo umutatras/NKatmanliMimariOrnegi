@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKatmanliMimariOrnegi.WebAPI", "NKatmanliMimariOrnegi.WebAPI\NKatmanliMimariOrnegi.WebAPI.csproj", "{DCB1F737-EF1C-4EA5-BBAF-6065D248E7E2}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKatmanliMimariOrnegi.DataAccess", "NKatmanliMimariOrnegi.DataAccess\NKatmanliMimariOrnegi.DataAccess.csproj", "{1E86369A-6A63-4B77-A843-D6AECD3EA05B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKatmanliMimariOrnegi.DTOs", "NKatmanliMimariOrnegi.DTOs\NKatmanliMimariOrnegi.DTOs.csproj", "{59700BEB-5E37-4867-8BBA-69BDA61D3015}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKatmanliMimariOrnegi.Entities", "NKatmanliMimariOrnegi.Entities\NKatmanliMimariOrnegi.Entities.csproj", "{94CA2C65-98F0-4C13-9424-B30E2C0E30A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{59700BEB-5E37-4867-8BBA-69BDA61D3015}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59700BEB-5E37-4867-8BBA-69BDA61D3015}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59700BEB-5E37-4867-8BBA-69BDA61D3015}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94CA2C65-98F0-4C13-9424-B30E2C0E30A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94CA2C65-98F0-4C13-9424-B30E2C0E30A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94CA2C65-98F0-4C13-9424-B30E2C0E30A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94CA2C65-98F0-4C13-9424-B30E2C0E30A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
