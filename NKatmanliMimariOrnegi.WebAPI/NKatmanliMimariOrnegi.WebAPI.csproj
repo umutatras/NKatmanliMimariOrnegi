@@ -14,4 +14,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NKatmanliMimariOrnegi.Business\NKatmanliMimariOrnegi.Business.csproj" />
+  </ItemGroup>
+
 </Project>
