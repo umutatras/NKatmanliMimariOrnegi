@@ -24,7 +24,7 @@ public class ProductService : IProductService
 
     public async Task DeleteProductAsync(int id)
     {
-        var product = await _productRepository.GetByFilterAsync(filter: x => x.Id == id, true);
+        var product = await _productRepository.GetById(id);
         if (product == null)
             throw new KeyNotFoundException($"Product with Id {id} not found.");
 
@@ -39,21 +39,21 @@ public class ProductService : IProductService
 
     public async Task<ProductGetByIdDto> GetProductByIdAsync(int id)
     {
-        var product = await _productRepository.GetByFilterAsync(filter:x=>x.Id==id,false);
+        var product = await _productRepository.GetById(id);
         if (product == null)
             throw new KeyNotFoundException($"Product with Id {id} not found.");
 
         return product.ToGetByIdDto();
     }
 
-    public async Task UpdateProductAsync(ProductUpdateDto dto)
+    public async Task UpdateProduct(ProductUpdateDto dto)
     {
-        var product = await _productRepository.GetByFilterAsync(filter:x=>x.Id==dto.Id,true);
+        var product = await _productRepository.GetById(dto.Id);
         if (product == null)
             throw new KeyNotFoundException($"Product with Id {dto.Id} not found.");
 
         product = dto.ToEntity(product);
 
-        _productRepository.Update(product);
+        await _productRepository.UpdateAsync(product);
     }
 }

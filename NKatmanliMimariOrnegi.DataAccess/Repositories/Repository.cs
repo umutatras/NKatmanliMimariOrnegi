@@ -37,14 +37,14 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
         return orderByType == OrderByType.ASC ? await _context.Set<T>().Where(filter).AsNoTracking().OrderBy(selector).ToListAsync() : await _context.Set<T>().Where(filter).AsNoTracking().OrderByDescending(selector).ToListAsync();
     }
 
-    public async Task<T> FindAsync(object id)
+    public async Task<T> FindAsync(int id)
     {
         return await _context.Set<T>().FindAsync(id);
     }
 
-    public async Task<T> GetByFilterAsync(Expression<Func<T, bool>> filter, bool asNoTracking = false)
+    public async Task<T> GetById(int id)
     {
-        return !asNoTracking ? await _context.Set<T>().AsNoTracking().SingleOrDefaultAsync(filter) : await _context.Set<T>().SingleOrDefaultAsync(filter);
+        return await _context.Set<T>().AsNoTracking().SingleOrDefaultAsync(x => x.Id == id);
     }
 
     public IQueryable<T> GetQuery()
@@ -62,12 +62,12 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
     public async Task AddAsync(T entity)
     {
         await _context.Set<T>().AddAsync(entity);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
-    public void Update(T entity)
+    public async Task UpdateAsync(T entity)
     {
-        _context.Set<T>().Update(entity);
-        _context.SaveChanges();
+        _context.Entry(entity).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
     }
 }
