@@ -1,4 +1,5 @@
 using NKatmanliMimariOrnegi.Business.DependencyResolvers.Microsoft;
+using NKatmanliMimariOrnegi.Business.Middleware;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDependencies(builder.Configuration);
@@ -19,6 +20,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseMiddleware<GlobalExceptionMiddleware>();
 
 app.MapControllers();
 

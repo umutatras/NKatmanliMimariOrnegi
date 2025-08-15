@@ -1,4 +1,5 @@
-﻿using NKatmanliMimariOrnegi.Business.Interfaces;
+﻿using NKatmanliMimariOrnegi.Business.Exceptions;
+using NKatmanliMimariOrnegi.Business.Interfaces;
 using NKatmanliMimariOrnegi.Business.Mappings;
 using NKatmanliMimariOrnegi.DataAccess.Interfaces;
 using NKatmanliMimariOrnegi.DTOs.Product;
@@ -14,7 +15,7 @@ public class ProductService : IProductService
     {
         _productRepository = productRepository;
     }
-  
+
 
     public async Task AddProductAsync(ProductAddDto dto)
     {
@@ -26,7 +27,7 @@ public class ProductService : IProductService
     {
         var product = await _productRepository.GetById(id);
         if (product == null)
-            throw new KeyNotFoundException($"Product with Id {id} not found.");
+            throw new NotFoundException($"Product with Id {id} not found.");
 
         _productRepository.Remove(product);
     }
