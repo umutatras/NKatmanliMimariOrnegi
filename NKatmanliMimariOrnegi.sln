@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKatmanliMimariOrnegi.WebAPI", "NKatmanliMimariOrnegi.WebAPI\NKatmanliMimariOrnegi.WebAPI.csproj", "{DCB1F737-EF1C-4EA5-BBAF-6065D248E7E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKatmanliMimariOrnegi.Business", "NKatmanliMimariOrnegi.Business\NKatmanliMimariOrnegi.Business.csproj", "{67DF12DB-5CBA-4F63-9720-6F2F3DAF57D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DCB1F737-EF1C-4EA5-BBAF-6065D248E7E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCB1F737-EF1C-4EA5-BBAF-6065D248E7E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCB1F737-EF1C-4EA5-BBAF-6065D248E7E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67DF12DB-5CBA-4F63-9720-6F2F3DAF57D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67DF12DB-5CBA-4F63-9720-6F2F3DAF57D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67DF12DB-5CBA-4F63-9720-6F2F3DAF57D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67DF12DB-5CBA-4F63-9720-6F2F3DAF57D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
