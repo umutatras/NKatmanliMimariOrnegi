@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using NKatmanliMimariOrnegi.Business.Interfaces;
 using NKatmanliMimariOrnegi.DTOs.Product;
 
